@@ -105,24 +105,8 @@ curl -s https://getcomposer.org/installer | php
 # Make Composer available globally
 mv composer.phar /usr/local/bin/composer
 
-# Laravel stuff
-# -------------
-# Load Composer packages
-#cd /var/www
-#composer global require "laravel/installer=~1.1"
-# ~/.composer/vendor/bin
-#~/.composer/vendor/bin/laravel new blog
-
-# Aura stuff
-# -------------
-# Load Composer packages
-cd /var/www
-composer create-project --stability=dev aura/framework-project aura_project
-
 # Set up the database
 echo "CREATE DATABASE IF NOT EXISTS aura_db" | mysql
 echo "CREATE USER 'aura_user'@'localhost' IDENTIFIED BY 'pass123'" | mysql
 echo "GRANT ALL PRIVILEGES ON aura_db.* TO 'aura_user'@'localhost' IDENTIFIED BY 'pass123'" | mysql
 
-# Set up the database
-#php artisan migrate
