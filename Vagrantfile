@@ -1,10 +1,16 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Config Github Settings
+github_username = "lemonjp"
+github_repo     = "aura-vagrant"
+github_branch   = "master"
+github_url      = "https://raw.githubusercontent.com/#{github_username}/#{github_repo}/#{github_branch}"
+
 # Server Configuration
 
 hostname   = "aura.dev"
-vbname     = "auravb"
+vbname     = "auravbox"
 
 # Set a local private network IP address.
 # See http://en.wikipedia.org/wiki/Private_network for explanation
@@ -26,7 +32,10 @@ server_timezone  = "Asia/Tokyo"
 Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/trusty64"
-  config.vm.provision :shell, :path => "bootstrap.sh"
+  config.vm.provision :shell, path => "#{github_url}/scripts/bootstrap.sh"
+
+  # Provision Vim setup
+  # config.vm.provision :shell, path => "#{github_url}/scripts/couchbase.sh"
 
   # Create a hostname, don't forget to put it to the `hosts` file
   # This will point to the server's default virtual host
